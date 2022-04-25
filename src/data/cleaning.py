@@ -28,10 +28,7 @@ def clean_transform(raw_data):
                     'last_60_minutes_per_game_bench', 'last_60_minutes_per_game_starting',
                     'DKP', 'FDP', 'SDP', 'orb', 'drb', 'trb', 'ast', 'stl', 'blk', 'tov', 'ts'], axis = 1, 
                                inplace = False)
-    
-    #New col concatenate game_id and player_id
-    df.loc[:, 'game_id_player_id'] = df['game_id'].astype('str') + df['player_id'].astype('str')
-    
+        
     #Dedupe new column, move to first
     duplicates = df.duplicated(['game_id_player_id'], keep='first')
     df = df[~duplicates]
