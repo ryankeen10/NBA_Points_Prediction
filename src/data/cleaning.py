@@ -23,17 +23,11 @@ def clean_transform(raw_data):
     df = df[df['OT'] == 0]
     
     #Remove unnecessary columns
-    df = df.drop(['OT', 'player', 'mp', 'double_double', 'triple_double', 'active_position_minutes', 
+    df = df.drop(['OT', 'mp', 'double_double', 'triple_double', 'active_position_minutes', 
                    'PG%', 'SG%', 'SF%', 'C%', 'Inactives', 'pf', 'is_inactive', 'PF%',
                     'last_60_minutes_per_game_bench', 'last_60_minutes_per_game_starting',
                     'DKP', 'FDP', 'SDP', 'orb', 'drb', 'trb', 'ast', 'stl', 'blk', 'tov', 'ts'], axis = 1, 
                                inplace = False)
-        
-    #Dedupe new column, move to first
-    duplicates = df.duplicated(['game_id_player_id'], keep='first')
-    df = df[~duplicates]
-    new_id = df.pop('game_id_player_id')
-    df.insert(0, 'game_id_player_id', new_id)
     
     #Sort by player, date
     df = df.sort_values(by = ['player_id', 'game_date'])
