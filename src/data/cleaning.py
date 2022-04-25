@@ -31,6 +31,15 @@ def clean_transform(raw_data):
     
     #Sort by player, date
     df = df.sort_values(by = ['player_id', 'game_date'])
+
+    #Add player game number as new column
+    df.insert(len(df.columns), 'player_game_num', False)
+    for i in range(1, len(df)):
+        if (df['player_id']).iloc[i] == (df['player_id']).iloc[i-1]:
+            df['player_game_num'].iloc[i] = (df['player_game_num'].iloc[i-1] + 1)
+        else:
+            df['player_game_num'].iloc[i] = 1
+
     
     #Reset index
     df.reset_index(drop = True, inplace = True)
