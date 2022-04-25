@@ -24,7 +24,7 @@ def clean_transform(raw_data):
     
     #Remove unnecessary columns
     df = df.drop(['OT', 'mp', 'double_double', 'triple_double', 'active_position_minutes', 
-                   'PG%', 'SG%', 'SF%', 'C%', 'Inactives', 'pf', 'is_inactive', 'PF%',
+                   'Inactives', 'pf', 'is_inactive', 'PF%',
                     'last_60_minutes_per_game_bench', 'last_60_minutes_per_game_starting',
                     'DKP', 'FDP', 'SDP', 'orb', 'drb', 'trb', 'ast', 'stl', 'blk', 'tov', 'ts'], axis = 1, 
                                inplace = False)
