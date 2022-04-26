@@ -40,7 +40,6 @@ def clean_transform(raw_data):
         else:
             df['player_game_num'].iloc[i] = 1
 
-    
     #Reset index
     df.reset_index(drop = True, inplace = True)
 
